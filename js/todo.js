@@ -24,16 +24,23 @@ function paintToDo(newTodo) {
     // html 리스트 요소 추가
     const li = document.createElement('li');
     li.id = newTodo.id;
+    const checkbox = document.createElement('input');
     const span = document.createElement('span');
-    span.innerText = newTodo.text;
+    span.innerText = ` ${newTodo.text}`;
     const button = document.createElement('button');
-    button.innerText='✔';
+    button.innerText='done'
     button.addEventListener('click', deleteToDo);
     // li 안에 span요소를 추가
+    li.prepend(checkbox);
     li.appendChild(span);
     li.appendChild(button);
     // ul안에 리스트 내용 추가
     toDoList.appendChild(li);
+
+    checkbox.type = 'checkbox'
+    checkbox.addEventListener('change', (e) => {
+      span.style.textDecoration = e.target.checked ? 'line-through' : ' '
+    });
 }
 
 function handleToDoSubmit(event) {

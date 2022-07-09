@@ -1,13 +1,20 @@
-const date = document.querySelector('h3#date');
+const DATE = document.querySelector('h3.date');
+const week = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-function getDate() {
+function dayOfWeek() {
+    const dates = new Date();
+    const year = dates.getFullYear(); // 년도
+    const month = dates.getMonth() +1; // 월
+    const date = dates.getDate(); // 일
+    const day = week[dates.getDay()]; //요일
 
+    console.log(dates);
+    console.log(day);
+    console.log(year);
+
+    DATE.innerText = `${year} . ${month} . ${date} . ${day}`;
 }
-date = new Date() 
-var week = new Array('Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat');
-var dayOfWeek = week[new Date().getDay()];
 
-function getdate(){
-    date.innerText = `${week[new Date().getDay()]}`;
-}
-getdate()
+dayOfWeek();
+
+
